@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 class UTip extends StatefulWidget {
   const UTip({super.key});
 
@@ -31,6 +30,7 @@ class UTip extends StatefulWidget {
 class _UTipState extends State<UTip> {
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(title: const Text('UTip')),
       // Add padding around the page so content is inset from the screen edges.
@@ -42,14 +42,17 @@ class _UTipState extends State<UTip> {
             Container(
               padding: const EdgeInsets.all(12), // inner spacing for texts
               decoration: BoxDecoration(
-                color:Theme.of(context).colorScheme.inversePrimary,
+                color: theme.colorScheme.inversePrimary,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Column(
-                children:  [
-                  Text('Total Per Person!', style: Theme.of(context).textTheme.displayMedium),
+                children: [
+                  Text(
+                    'Total Per Person!',
+                    style: theme.textTheme.displayMedium,
+                  ),
                   SizedBox(height: 8),
-                  Text("\$ 23.78"),
+                  Text("\$ 23.78", style: theme.textTheme.displaySmall),
                 ],
               ),
             ),
