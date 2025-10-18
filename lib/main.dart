@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'UTip App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       home: const UTip(),
@@ -31,6 +31,10 @@ class _UTipState extends State<UTip> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
+    final style=theme.textTheme.titleMedium!.copyWith(
+      color: theme.colorScheme.onPrimary,
+      fontWeight: FontWeight.bold,  
+    );
     return Scaffold(
       appBar: AppBar(title: const Text('UTip')),
       // Add padding around the page so content is inset from the screen edges.
@@ -49,10 +53,14 @@ class _UTipState extends State<UTip> {
                 children: [
                   Text(
                     'Total Per Person!',
-                    style: theme.textTheme.displayMedium,
+                    style: style,
                   ),
                   SizedBox(height: 8),
-                  Text("\$ 23.78", style: theme.textTheme.displaySmall),
+                  Text("\$ 23.78", 
+                  style: style.copyWith(
+                    color: theme.colorScheme.onPrimary,
+                    fontSize: theme.textTheme.displaySmall?.fontSize,
+                    )),
                 ],
               ),
             ),
